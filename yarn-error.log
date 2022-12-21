@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add @types/bcryptjs -D
+  /usr/bin/node /usr/bin/yarn add jsonwebtoken
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 Yarn version: 
   1.22.19
@@ -14,7 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/matheus/Downloads/API/ts/node_modules/multer/node_modules/mkdirp/LICENSE'
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
 
 npm manifest: 
   {
@@ -44,6 +45,7 @@ npm manifest:
       "uuid": "^9.0.0"
     },
     "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
       "@types/express": "^4.17.14",
       "@types/multer": "^1.4.7",
       "@types/uuid": "^9.0.0",
@@ -109,6 +111,11 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.3.tgz"
     integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
+  
+  "@types/bcryptjs@^2.4.2":
+    version "2.4.2"
+    resolved "https://registry.yarnpkg.com/@types/bcryptjs/-/bcryptjs-2.4.2.tgz#e3530eac9dd136bfdfb0e43df2c4c5ce1f77dfae"
+    integrity sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==
   
   "@types/body-parser@*":
     version "1.19.2"
