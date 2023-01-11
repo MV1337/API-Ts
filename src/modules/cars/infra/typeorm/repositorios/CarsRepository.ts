@@ -19,6 +19,8 @@ class CarsRepository implements ICarsRepository {
     fine_amount,
     license_plate,
     name,
+    specifications,
+    id
   }: ICreateCarDTO): Promise<Car> {
     const car = this.respository.create({
       brand,
@@ -28,6 +30,8 @@ class CarsRepository implements ICarsRepository {
       fine_amount,
       license_plate,
       name,
+      specifications,
+      id
     });
 
     await this.respository.save(car);
@@ -35,33 +39,41 @@ class CarsRepository implements ICarsRepository {
     return car;
   }
 
-  async findyByLicensePlate(license_plate: string): Promise<Car> {
-    const car = await this.respository.findOne({license_plate})
-    return car
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = await this.respository.findOne({ license_plate });
+    return car;
   }
 
-  async findAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]> {
+  async findAvailable(
+    brand?: string,
+    category_id?: string,
+    name?: string
+  ): Promise<Car[]> {
     const carsQuery = await this.respository
-    .createQueryBuilder("c")
-    .where("available = :available", {available: true })
+      .createQueryBuilder("c")
+      .where("available = :available", { available: true });
 
-    if(brand) {
-      carsQuery.andWhere("c.brand = :brand", {brand})
+    if (brand) {
+      carsQuery.andWhere("c.brand = :brand", { brand });
     }
 
-    if(name) {
-      carsQuery.andWhere("c.name = :name", {name})
+    if (name) {
+      carsQuery.andWhere("c.name = :name", { name });
     }
 
-    if(category_id) {
-      carsQuery.andWhere("c.category_id = :category_id", {category_id})
+    if (category_id) {
+      carsQuery.andWhere("c.category_id = :category_id", { category_id });
     }
 
     const cars = await carsQuery.getMany();
 
     return cars;
+  }
 
+  async findById(id: string): Promise<Car> {
+    const car = await this.respository.findOne(id)
+    return car
   }
 }
 
-export {CarsRepository}
+export { CarsRepository };
